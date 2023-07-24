@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class MockyRestService {
 
     private final String url;
-    private final RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     public MockyRestService(ApplicationContextUtil contextUtil) {
         this.restTemplate = new RestTemplate();
@@ -24,4 +24,6 @@ public class MockyRestService {
                 urlWithPath, HttpMethod.GET, null, MockyResponseDTO.class);
         return response.getBody();
     }
+
+
 }
