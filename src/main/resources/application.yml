@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: snapp-fodd
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/snappfood
+    username: amirhossein
+    password:
+
+  jpa:
+    properties:
+      hibernate:
+        default_schema: snappfood
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    schemas: ${spring.jpa.properties.hibernate.default_schema}
+    baseline-on-migrate: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ${spring.application.name}
+      enable-auto-commit: true
+
+  messages:
+    basename: messages/messages
+
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    rest:
+      max-page-size: 0x7fffffff
+
+  sql:
+    init:
+      mode: always
+
+server:
+  error:
+    include-message: always
+  port: 8092
+  forward-headers-strategy: framework
+
+mocky:
+  url: https://run.mocky.io/
+
+
+
